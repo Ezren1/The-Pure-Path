@@ -1574,8 +1574,7 @@ body.cursor-hover .cursor-ring {
   position: relative;
   overflow: hidden;
   padding: var(--space-5xl) var(--space-xl);
-  background:
-    radial-gradient(ellipse at bottom, var(--color-primary) 0%, var(--bg-secondary) 100%);
+  background: var(--bg-primary);
 }
 
 .hero-background {
@@ -1589,15 +1588,7 @@ body.cursor-hover .cursor-ring {
 }
 
 .hero-pattern {
-  position: absolute;
-  width: 200%;
-  height: 200%;
-  top: -50%;
-  left: -50%;
-  background-image:
-    radial-gradient(circle at center, rgba(212, 175, 55, 0.05) 0%, transparent 30%),
-    repeating-conic-gradient(from 0deg, transparent 0% 2%, rgba(212, 175, 55, 0.03) 2% 4%);
-  animation: rotatePattern 120s linear infinite;
+  display: none;
 }
 
 @keyframes rotatePattern {
@@ -6164,33 +6155,27 @@ body.cursor-hover .cursor-ring {
 <source src="assets/audio/burn.mp3" type="audio/mpeg"/>
 <source src="assets/audio/burn.ogg" type="audio/ogg"/>
 </audio>
-<!-- Link to external JavaScript files -->
-<script src="js/data-loader.js"></script>
-<script src="js/gsap-config.js"></script>
-<script src="js/interactions.js"></script>
-<script src="js/scroll.js"></script>
-<script src="js/main.js"></script>
 <script>
 // GSAP Animations
 gsap.registerPlugin(ScrollTrigger);
 
 // Hero Section Animation
-gsap.from('.hero-title', { opacity: 0, y: 50, duration: 1, ease: 'power3.out', delay: 0.5 });
-gsap.from('.hero-quote', { opacity: 0, y: 50, duration: 1, ease: 'power3.out', delay: 0.8 });
-gsap.from('.hero-actions', { opacity: 0, y: 50, duration: 1, ease: 'power3.out', delay: 1.1 });
-gsap.from('.hero-stats', { opacity: 0, y: 50, duration: 1, ease: 'power3.out', delay: 1.4 });
+gsap.from('.hero-title', { opacity: 0, y: 20, duration: 0.8, ease: 'power3.out', delay: 0.2 });
+gsap.from('.hero-quote', { opacity: 0, y: 20, duration: 0.8, ease: 'power3.out', delay: 0.4 });
+gsap.from('.hero-actions', { opacity: 0, y: 20, duration: 0.8, ease: 'power3.out', delay: 0.6 });
+gsap.from('.hero-stats', { opacity: 0, y: 20, duration: 0.8, ease: 'power3.out', delay: 0.8 });
 
 // Section Animations
 document.querySelectorAll('.premium-section').forEach(section => {
   gsap.from(section, {
     scrollTrigger: {
       trigger: section,
-      start: 'top 80%',
+      start: 'top 90%',
       toggleActions: 'play none none none'
     },
     opacity: 0,
-    y: 100,
-    duration: 1.2,
+    y: 50,
+    duration: 1,
     ease: "power2.out"
   });
 });
@@ -6201,12 +6186,12 @@ if (window.innerWidth > 768) {
     gsap.from(card, {
       scrollTrigger: {
         trigger: card,
-        start: 'top 85%',
+        start: 'top 90%',
         toggleActions: 'play none none none'
       },
       opacity: 0,
-      y: 50,
-      duration: 0.8,
+      y: 30,
+      duration: 0.6,
       ease: 'power3.out',
       delay: (index % 3) * 0.1
     });
