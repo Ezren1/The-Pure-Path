@@ -1002,6 +1002,140 @@ body.cursor-hover .cursor-ring {
   .premium-cursor { display: none; }
 }
 
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .premium-nav {
+    display: none;
+  }
+
+  .mobile-menu-toggle {
+    display: flex;
+  }
+
+  .header-content {
+    padding: var(--space-md) var(--space-lg);
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .premium-btn {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .hero-stats {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .premium-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .floating-elements {
+    bottom: var(--space-lg);
+    right: var(--space-lg);
+  }
+
+  .floating-btn {
+    width: 48px;
+    height: 48px;
+    font-size: var(--text-base);
+  }
+}
+
+@media (max-width: 768px) {
+  .section-container {
+    padding: 0 var(--space-lg);
+  }
+
+  .premium-section {
+    padding: var(--space-4xl) 0;
+  }
+
+  .hero-title {
+    font-size: clamp(var(--text-4xl), 10vw, var(--text-6xl));
+  }
+
+  .hero-quote {
+    padding: var(--space-lg);
+    font-size: clamp(var(--text-base), 4vw, var(--text-lg));
+  }
+
+  .premium-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .premium-card {
+    padding: var(--space-lg);
+  }
+
+  .footer-main {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .modal-container {
+    margin: var(--space-lg);
+    max-height: calc(100vh - 2 * var(--space-lg));
+  }
+
+  .accessibility-panel {
+    width: 100%;
+    right: -100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-content {
+    padding: var(--space-sm) var(--space-md);
+  }
+
+  .premium-hero {
+    padding: var(--space-3xl) var(--space-md);
+  }
+
+  .section-container {
+    padding: 0 var(--space-md);
+  }
+
+  .premium-section {
+    padding: var(--space-3xl) 0;
+  }
+
+  .premium-btn {
+    padding: var(--space-md) var(--space-xl);
+    min-height: 48px;
+  }
+
+  .floating-elements {
+    bottom: var(--space-md);
+    right: var(--space-md);
+  }
+
+  .floating-btn {
+    width: 44px;
+    height: 44px;
+  }
+
+  .premium-search {
+    width: 250px;
+  }
+
+  .premium-search:focus {
+    width: 300px;
+  }
+}
+
 /* Progress Indicators */
 .scroll-progress-container {
   position: fixed;
@@ -6062,20 +6196,22 @@ document.querySelectorAll('.premium-section').forEach(section => {
 });
 
 // Card Animations
-document.querySelectorAll('.premium-card, .contradiction-card, .conflict-card, .character-card, .problematic-card, .prohibition-card, .faq-item').forEach((card, index) => {
-  gsap.from(card, {
-    scrollTrigger: {
-      trigger: card,
-      start: 'top 85%',
-      toggleActions: 'play none none none'
-    },
-    opacity: 0,
-    y: 50,
-    duration: 0.8,
-    ease: 'power3.out',
-    delay: (index % 3) * 0.1
+if (window.innerWidth > 768) {
+  document.querySelectorAll('.premium-card, .contradiction-card, .conflict-card, .character-card, .problematic-card, .prohibition-card, .faq-item').forEach((card, index) => {
+    gsap.from(card, {
+      scrollTrigger: {
+        trigger: card,
+        start: 'top 85%',
+        toggleActions: 'play none none none'
+      },
+      opacity: 0,
+      y: 50,
+      duration: 0.8,
+      ease: 'power3.out',
+      delay: (index % 3) * 0.1
+    });
   });
-});
+}
 </script>
 <script style="font-family:'Amiri Quran','Times New Roman',serif; direction:rtl;">
 const contradictionsData = {
